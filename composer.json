@@ -1,0 +1,37 @@
+{
+    "name": "retepmal/laravel-gae-queue-driver",
+    "description": "Provide a Laravel queue driver using Google Cloud Tasks service.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Peter Lam",
+            "email": "peter@peterlam.dev"
+        }
+    ],
+    "require": {
+        "google/cloud-core": "^1.39",
+        "google/apiclient": "^2.7"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^9.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Retepmal\\LaravelGaeQueue\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "Retepmal\\LaravelGaeQueue\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Retepmal\\LaravelGaeQueue\\GaeQueueServiceProvider"
+            ]
+        }
+    }
+}
