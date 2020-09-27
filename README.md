@@ -22,7 +22,21 @@ GOOGLE_CLOUD_TASK_HANDLER_URI=
 > 
 > For the handler engpoint, it is /task_handler by default and you may set it using ``GOOGLE_CLOUD_TASK_HANDLER_URI``.
 
-3. Create an ``queue.yaml`` file in project root as below:
+3. Add ``gae`` queue connector in ``config/queue.php``.
+```php
+    'connections' => [
+        'gae' => [
+            'driver' => 'gae',
+            'project_id' => env('GOOGLE_CLOUD_PROJECT'),
+            'location_id' => env('GOOGLE_CLOUD_TASK_LOCATION_ID'),
+            'queue_id' => env('GOOGLE_CLOUD_TASK_QUEUE_ID', 'default'),
+        ],
+
+        // ...
+    ],
+```
+
+4. Create an ``queue.yaml`` file in project root as below:
 ```yaml
 queue:
 - name: default
@@ -34,7 +48,7 @@ queue:
 
 > For fine-turing the queue, please refer to [queue.yaml Reference](https://cloud.google.com/appengine/docs/standard/php/config/queueref)
 
-4. Deplay the queue setting by executing the command:
+5. Deplay the queue setting by executing the command:
 ```shell
 gcloud app delpoy queue.yaml
 ```
